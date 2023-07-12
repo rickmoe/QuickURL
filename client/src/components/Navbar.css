@@ -1,0 +1,7 @@
+:root {
+  --nav-height: 2rem;
+}
+
+nav {
+  height: var(--nav-height);
+}
