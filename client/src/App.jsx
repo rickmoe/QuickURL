@@ -1,64 +1,39 @@
-// import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-
-// function wait(duration) {
-//   return new Promise((resolve) => setTimeout(resolve, duration));
-// }
+import NotFound from "./pages/NotFound";
+import Redirect from "./pages/Redirect";
 
 function App() {
-  // const queryClient = useQueryClient();
+  let router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        <Route index element={<Home />} />
+        <Route path="/:id" element={<Redirect />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    )
+  );
 
-  // let data = await getUrl("2");
-  // console.log(data);
+  return <RouterProvider router={router} />;
+}
 
-  // const postsQuery = useQuery({
-  //   queryKey: ["posts"],
-  //   queryFn: () => wait(1000).then(() => [...POSTS]),
-  // });
-
-  // const newPostMutation = useMutation({
-  //   mutationFn: (title) => {
-  //     return wait(1000).then(() =>
-  //       POSTS.push({ id: crypto.randomUUID, title: title })
-  //     );
-  //   },
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries(["posts"]);
-  //   },
-  // });
-
-  // if (postsQuery.isLoading) return <h1>Loading</h1>;
-  // if (postsQuery.isError) return <pre>{JSON.stringify(postsQuery.error)}</pre>;
-
-  {
-    /*return (
-    <div>
-      <h1>
-        {postsQuery.data.map((post) => {
-          post;
-        })}
-      </h1>
-      {postsQuery.data.map((post) => (
-        <div key={post.id}>{post.title}</div>
-      ))}
-      <button
-        disabled={newPostMutation.isLoading}
-        onClick={() => newPostMutation.mutate("new post")}
-      >
-        Add New
-      </button>
-    </div>
-      );*/
-  }
-
+const Root = () => {
   return (
     <>
       <Navbar />
-      <Home />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
-}
+};
 
 export default App;

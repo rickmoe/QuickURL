@@ -27,12 +27,7 @@ app.get("/", (req, res) => {
 app.get("/:id", (req, res) => {
   let mappings = getMappingsById(req.params.id);
   if (mappings.length > 0) res.json(mappings[0]);
-  else res.send(`Url ID $(req.params.id) not defined`);
-});
-
-app.get("*", (req, res) => {
-  console.log(req);
-  res.send("Page not found");
+  else res.status(500).send(`Url ID $(req.params.id) not defined`);
 });
 
 app.listen(port, () => console.log(`<Server> Running on localhost:${port}`));

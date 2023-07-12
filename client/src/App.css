@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 :root {
-  font-size: 16px;
+  --color-neutral-1: #f9f9f9;
+  --color-neutral-2: #f0f0f0;
+  --color-neutral-3: #202020;
+  --color-neutral-4: #000000;
+  --color-base: #246282ef;
+  --color-accent: #ed695b;
+  --color-highlight: hsl(6, 80%, 56%);
+
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.8;
 }
 
 *,
@@ -8,4 +19,42 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+main {
+  margin-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
+  padding: 4% 10% 0;
+
+  background: var(--color-neutral-1);
+  color: var(--color-neutral-4);
+  text-align: center;
+}
+
+h1 {
+  color: var(--color-base);
+  opacity: 0.9;
+}
+
+p {
+  opacity: 0.8;
+}
+
+.emphasize {
+  font-weight: bold;
+  color: var(--color-base);
+  opacity: 1;
+}
+
+a {
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.8rem;
+
+  background: var(--color-accent);
+  color: var(--color-neutral-1);
+  opacity: 1;
+  text-decoration: none;
+}
+a:hover {
+  background-color: var(--color-highlight);
 }

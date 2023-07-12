@@ -10,6 +10,7 @@ export const getMappings = async () => {
     return response.data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -18,6 +19,6 @@ export const getURL = async (id) => {
     const response = await api.get(`/${id}`);
     return response.data.url;
   } catch (error) {
-    console.error(error);
+    return null;
   }
 };
