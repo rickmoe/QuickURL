@@ -18,8 +18,8 @@ const Home = () => {
       <ul>
         {mappings.length !== 0 &&
           mappings.map((map) => (
-            <li key={map.id}>
-              {map.id} --- {map.url}
+            <li key={map._id}>
+              {map._id} --- {map.url}
             </li>
           ))}
       </ul>
