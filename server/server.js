@@ -1,33 +1,14 @@
-const express = require("express");
+import "dotenv/config";
+import express from "express";
+import bodyParser from "body-parser";
+import router from "./controllers/routes.js";
+
 const app = express();
-const bodyParser = require("body-parser");
 const port = process.env.PORT || 5000;
 
-let mapping = [
-  {
-    id: "1",
-    url: "https://asdf.com",
-  },
-  {
-    id: "2",
-    url: "https://google.com",
-  },
-];
-
-let getMappingsById = (id) => {
-  return mapping.filter((map) => map.id === id);
-};
-
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get("/", (req, res) => {
-  res.send(mapping);
-});
-
-app.get("/:id", (req, res) => {
-  let mappings = getMappingsById(req.params.id);
-  if (mappings.length > 0) res.json(mappings[0]);
-  else res.status(500).send(`Url ID $(req.params.id) not defined`);
-});
+app.use(router);
 
 app.listen(port, () => console.log(`<Server> Running on localhost:${port}`));
+
+export default app;

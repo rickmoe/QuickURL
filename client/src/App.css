@@ -5,8 +5,8 @@
   --color-neutral-2: #f0f0f0;
   --color-neutral-3: #202020;
   --color-neutral-4: #000000;
-  --color-base: #246282ef;
-  --color-accent: #ed695b;
+  --color-base: hsla(200, 57%, 35%, 95%);
+  --color-accent: hsl(6, 80%, 56%);
   --color-highlight: hsl(6, 80%, 56%);
 
   font-family: "Open Sans", sans-serif;
