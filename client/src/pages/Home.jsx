@@ -5,13 +5,15 @@ import URLTable from "../components/URLTable";
 const Home = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.url.value);
-    postURL(event.target.url.value).then((response) => console.log(response));
+    postURL(event.target.url.value).then((response) =>
+      console.log("Fix me post", response)
+    );
   };
 
   const handleDelete = (id) => {
-    console.log(id);
-    deleteMapping(id).then((response) => console.log(response));
+    deleteMapping(id).then((response) =>
+      console.log("Fix me delete", response)
+    );
   };
 
   return (

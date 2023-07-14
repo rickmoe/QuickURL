@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import db from "./db.js";
 
 const generateId = (length, characterSet) => {
   let result = "";
@@ -16,7 +16,7 @@ const idLength = 6;
 const idCharSet =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
-const linkMapSchema = new mongoose.Schema({
+const linkMapSchema = new db.Schema({
   _id: {
     type: String,
     default: () => generateId(idLength, idCharSet),
@@ -29,4 +29,4 @@ const linkMapSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("LinkMap", linkMapSchema);
+export default db.model("LinkMap", linkMapSchema);
