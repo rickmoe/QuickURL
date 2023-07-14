@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 :root {
+  /* Primary Neutrals, Descending Theme Contrast */
   --color-neutral-1: #f9f9f9;
   --color-neutral-2: #f0f0f0;
   --color-neutral-3: #ddd;
-  --color-neutral-4: #444;
-  --color-neutral-5: #202020;
-  --color-neutral-6: #000000;
-  --color-base-mute: hsl(200, 57%, 28%);
-  --color-base: hsl(200, 57%, 35%);
-  --color-base-highlight: hsl(200, 57%, 55%);
-  --color-accent: hsl(6, 80%, 64%);
-  --color-accent-highlight: hsl(6, 80%, 56%);
+  /* Contrast Neutrals, Ascending Theme Contrast */
+  --color-contrast-1: #000;
+  --color-contrast-2: #202020;
+  --color-contrast-3: #444;
+  /* Base/Brand Colors */
+  --color-teal-muted: hsl(200, 57%, 28%);
+  --color-teal: hsl(200, 57%, 35%);
+  --color-teal-highlight: hsl(200, 57%, 55%);
+  --color-teal-blend: hsl(200, 57%, 90%);
+  /* Accent/CTA Colors */
+  --color-salmon: hsl(6, 80%, 64%);
+  --color-salmon-highlight: hsl(6, 80%, 56%);
 
   font-family: "Open Sans", sans-serif;
   line-height: 1.8;
@@ -31,12 +36,12 @@ main {
   padding: 4% 10% 0;
   
   background: var(--color-neutral-1);
-  color: var(--color-neutral-6);
+  color: var(--color-contast-1);
   text-align: center;
 }
 
 h1 {
-  color: var(--color-base);
+  color: var(--color-teal);
   opacity: 0.9;
 }
 
@@ -46,40 +51,43 @@ p {
 
 .emphasize {
   font-weight: bold;
-  color: var(--color-base);
+  color: var(--color-teal);
   opacity: 1;
 }
 
 a {
   text-decoration: none;
-  color: var(--color-base-mute);
+  color: var(--color-teal-muted);
 }
 a:hover {
-  color: var(--color-base-highlight);
+  color: var(--color-teal-highlight);
 }
 
 a.button {
   padding: 0.1rem 0.5rem;
   border-radius: 0.8rem;
   
-  background: var(--color-accent);
+  background: var(--color-salmon);
   color: var(--color-neutral-1);
   opacity: 1;
 }
 a.button:hover {
-  background-color: var(--color-accent-highlight);
+  background-color: var(--color-salmon-highlight);
 }
 
 table {
   width: 100%;
   margin: 3rem 0;
-  border-inline: 0.25px var(--color-neutral-4) solid;
+  border: 0.25px var(--color-contrast-3) solid;
   border-spacing: 0;
 }
 thead {
   background: var(--color-neutral-3);
-  color: var(--color-base);
+  color: var(--color-teal);
 }
-tbody tr:nth-child(2n - 1) {
+tbody tr:nth-last-child(odd) {
   background: var(--color-neutral-2);
+}
+tbody tr:hover {
+  background: var(--color-teal-blend);
 }

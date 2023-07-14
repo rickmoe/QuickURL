@@ -1,6 +1,6 @@
 import { useMappings } from "../hooks/useMappings";
 
-const URLTable = () => {
+const URLTable = ({ onDelete }) => {
   const mappings = useMappings();
 
   const truncate = (string, maxLength) => {
@@ -16,6 +16,7 @@ const URLTable = () => {
         <tr id="table-head">
           <th>ID</th>
           <th>URL</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +27,9 @@ const URLTable = () => {
               <a target="_blank" href={map.url}>
                 {truncate(map.url, 30)}
               </a>
+            </td>
+            <td>
+              <button onClick={() => onDelete(map._id)}>Delete</button>
             </td>
           </tr>
         ))}

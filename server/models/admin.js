@@ -5,7 +5,7 @@ mongoose.connect(process.env.MONGO_URI);
 
 const db = {};
 /******** Database Methods ********/
-// Get
+/*** Get ***/
 db.getMappings = async () => {
   return await LinkMap.find();
 };
@@ -13,11 +13,15 @@ db.getMappings = async () => {
 db.getMappingById = async (id) => {
   return await LinkMap.findOne({ _id: id });
 };
-// Post
+/*** Post ***/
 db.postMapping = async ({ url }) => {
   return await LinkMap.create({ url: url });
 };
-// Put
-// Delete
+/*** Put ***/
+// Unused
+/*** Delete ***/
+db.deleteMapping = async (id) => {
+  return await LinkMap.deleteOne({ _id: id });
+};
 /**********************************/
 export default db;

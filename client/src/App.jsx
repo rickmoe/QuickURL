@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -7,9 +8,9 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import Redirect from "./pages/Redirect";
+const Home = lazy(() => import("./pages/Home"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Redirect = lazy(() => import("./pages/Redirect"));
 
 function App() {
   let router = createBrowserRouter(
@@ -30,7 +31,9 @@ const Root = () => {
     <>
       <Navbar />
       <main>
-        <Outlet />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

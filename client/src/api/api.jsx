@@ -4,7 +4,7 @@ import axios from "axios";
 const api = axios.create({ baseURL: "http://localhost:5000" });
 
 /******** API Methods ********/
-// Get
+/*** Get ***/
 export const getMappings = async () => {
   try {
     const response = await api.get("/");
@@ -23,16 +23,26 @@ export const getURL = async (id) => {
     return null;
   }
 };
-// Post
+/*** Post ***/
 export const postURL = async (url) => {
   try {
-    const response = await api.post(`/`, { url: url });
+    const response = await api.post("/", { url: url });
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 };
-// Put
-// Delete
+/*** Put ***/
+// Unused
+/*** Delete ***/
+export const deleteMapping = async (id) => {
+  try {
+    const response = await api.delete(`/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
 /*****************************/
