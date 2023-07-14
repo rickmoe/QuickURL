@@ -9,7 +9,10 @@ const generateId = (length, characterSet) => {
   return result;
 };
 
-const idLength = 5;
+// ID Length was chosen so there is >99.9% chance 10000 IDs are unique
+// Prob(unique) = (64^n)! / (64^n - m)! / (64^n)^m where n=idLength and
+// m is the sample size
+const idLength = 6;
 const idCharSet =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 

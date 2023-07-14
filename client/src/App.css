@@ -3,11 +3,15 @@
 :root {
   --color-neutral-1: #f9f9f9;
   --color-neutral-2: #f0f0f0;
-  --color-neutral-3: #202020;
-  --color-neutral-4: #000000;
-  --color-base: hsla(200, 57%, 35%, 95%);
-  --color-accent: hsl(6, 80%, 56%);
-  --color-highlight: hsl(6, 80%, 56%);
+  --color-neutral-3: #ddd;
+  --color-neutral-4: #444;
+  --color-neutral-5: #202020;
+  --color-neutral-6: #000000;
+  --color-base-mute: hsl(200, 57%, 28%);
+  --color-base: hsl(200, 57%, 35%);
+  --color-base-highlight: hsl(200, 57%, 55%);
+  --color-accent: hsl(6, 80%, 64%);
+  --color-accent-highlight: hsl(6, 80%, 56%);
 
   font-family: "Open Sans", sans-serif;
   line-height: 1.8;
@@ -25,9 +29,9 @@ main {
   margin-top: var(--nav-height);
   min-height: calc(100vh - var(--nav-height));
   padding: 4% 10% 0;
-
+  
   background: var(--color-neutral-1);
-  color: var(--color-neutral-4);
+  color: var(--color-neutral-6);
   text-align: center;
 }
 
@@ -47,14 +51,35 @@ p {
 }
 
 a {
+  text-decoration: none;
+  color: var(--color-base-mute);
+}
+a:hover {
+  color: var(--color-base-highlight);
+}
+
+a.button {
   padding: 0.1rem 0.5rem;
   border-radius: 0.8rem;
-
+  
   background: var(--color-accent);
   color: var(--color-neutral-1);
   opacity: 1;
-  text-decoration: none;
 }
-a:hover {
-  background-color: var(--color-highlight);
+a.button:hover {
+  background-color: var(--color-accent-highlight);
+}
+
+table {
+  width: 100%;
+  margin: 3rem 0;
+  border-inline: 0.25px var(--color-neutral-4) solid;
+  border-spacing: 0;
+}
+thead {
+  background: var(--color-neutral-3);
+  color: var(--color-base);
+}
+tbody tr:nth-child(2n - 1) {
+  background: var(--color-neutral-2);
 }

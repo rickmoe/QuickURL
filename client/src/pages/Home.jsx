@@ -1,28 +1,20 @@
-import { useEffect, useState } from "react";
-import { getMappings } from "../api/api";
+import { postURL } from "../api/api";
+import URLForm from "../components/URLForm";
+import URLTable from "../components/URLTable";
 
 const Home = () => {
-  const [mappings, setMappings] = useState([]);
-
-  useEffect(() => {
-    getMappings()
-      .then((response) => setMappings(response))
-      .catch((error) => console.log(error));
-  }, []);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(event.target.url.value);
+    postURL(event.target.url.value).then((response) => console.log(response));
+  };
 
   return (
     <>
-      <h1>QuickURL</h1>
+      <h1>Link Shortening Tool</h1>
       <p>Link shortening made easy</p>
-      {mappings.length === 0 && <p>Loading...</p>}
-      <ul>
-        {mappings.length !== 0 &&
-          mappings.map((map) => (
-            <li key={map._id}>
-              {map._id} --- {map.url}
-            </li>
-          ))}
-      </ul>
+      <URLForm onSubmit={handleSubmit} />
+      <URLTable />
     </>
   );
 };

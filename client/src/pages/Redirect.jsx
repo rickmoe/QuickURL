@@ -1,26 +1,12 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useGetURL } from "../hooks/useGetURL";
 import NotFound from "./NotFound";
-import { getURL } from "../api/api";
 
 const Redirect = () => {
-  const path = useLocation().pathname;
-  const [url, setUrl] = useState("");
+  const [url, path] = useGetURL();
 
-  useEffect(() => {
-    getURL(path.slice(1)).then((response) => setUrl(response));
-  }, []);
-
-  if (url !== null && url !== "") {
-    window.location.replace(url);
-  }
-
-  return (
-    <>
-      {url === "" && <h1>Fetching...</h1>}
-      {url === null && <NotFound path={path} />}
-    </>
-  );
+  if (url === undefined) return <h1>Fetching...</h1>;
+  else if (url === null) return <NotFound path={path} />;
+  return null;
 };
 
 export default Redirect;

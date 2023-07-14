@@ -8,7 +8,9 @@ const NotFound = ({ path = "" }) => {
         Sorry, we could not find a URL linked to the path{" "}
         {path !== "" ? <span className="emphasize">{path}</span> : "given"}
       </p>
-      <Link to="/">Return Home</Link>
+      <Link to="/" className="button">
+        Return Home
+      </Link>
     </>
   );
 };

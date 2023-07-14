@@ -1,9 +1,10 @@
 import axios from "axios";
 
 // Define api ("baseURL" references the backend)
-export const api = axios.create({ baseURL: "http://localhost:5000" });
+const api = axios.create({ baseURL: "http://localhost:5000" });
 
-// Get Helpers
+/******** API Methods ********/
+// Get
 export const getMappings = async () => {
   try {
     const response = await api.get("/");
@@ -22,3 +23,16 @@ export const getURL = async (id) => {
     return null;
   }
 };
+// Post
+export const postURL = async (url) => {
+  try {
+    const response = await api.post(`/`, { url: url });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+// Put
+// Delete
+/*****************************/

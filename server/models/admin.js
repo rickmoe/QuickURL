@@ -3,20 +3,21 @@ import LinkMap from "./LinkMap.js";
 
 mongoose.connect(process.env.MONGO_URI);
 
-/******** Helpers ********/
+const db = {};
+/******** Database Methods ********/
 // Get
-export const getMappings = async () => {
+db.getMappings = async () => {
   return await LinkMap.find();
 };
 
-export const getMappingById = async (id) => {
+db.getMappingById = async (id) => {
   return await LinkMap.findOne({ _id: id });
 };
 // Post
-const postMapping = async ({ url }) => {
+db.postMapping = async ({ url }) => {
   return await LinkMap.create({ url: url });
 };
-// Update
-
+// Put
 // Delete
-/*************************/
+/**********************************/
+export default db;
