@@ -1,14 +1,36 @@
-import { useEffect, useState } from "react";
-import { getMappings } from "../api/api";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getMappings, deleteMapping, postMapping } from "../api/api";
 
 export const useMappings = () => {
-  const [mappings, setMappings] = useState(null);
+  const QueryClient = useQueryClient();
 
-  useEffect(() => {
-    getMappings()
-      .then((response) => setMappings(response))
-      .catch((error) => console.log(error));
-  }, []);
+  const {
+    status,
+    isFetching,
+    error,
+    data: mappings,
+  } = useQuery(["mappings"], getMappings);
 
-  return mappings;
+  const postMappingMutation = useMutation(postMapping, {
+    onSuccess: () => {
+      // Force refetch of mappings
+      QueryClient.invalidateQueries(["mappings"]);
+    },
+  });
+
+  const deleteMappingMutation = useMutation(deleteMapping, {
+    onSuccess: () => {
+      // Force refetch of mappings
+      QueryClient.invalidateQueries(["mappings"]);
+    },
+  });
+
+  return {
+    mappings,
+    status,
+    isFetching,
+    error,
+    postMappingMutation,
+    deleteMappingMutation,
+  };
 };

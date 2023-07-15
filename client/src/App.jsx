@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import AlertBox from "./components/AlertBox";
 const Home = lazy(() => import("./pages/Home"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Redirect = lazy(() => import("./pages/Redirect"));
@@ -35,6 +36,7 @@ const Root = () => {
           <Outlet />
         </Suspense>
       </main>
+      <AlertBox />
     </>
   );
 };

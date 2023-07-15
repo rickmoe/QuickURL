@@ -1,0 +1,30 @@
+.alert-box {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.23rem;
+}
+
+.alert {
+  font-size: 1.4rem;
+  padding: 0.125rem 1rem;
+  border-radius: 2rem 0rem;
+  color: var(--color-neutral-2);
+  border: 1px var(--color-contrast-2) solid;
+}
+.alert.success {
+  background-color: var(--color-alert-success);
+}
+.alert.error {
+  background-color: var(--color-alert-error);
+}
+.alert.warning {
+  background-color: var(--color-alert-warning);
+  color: #202020;
+}
+.alert.info {
+  background-color: var(--color-alert-info);
+}

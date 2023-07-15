@@ -1,25 +1,23 @@
-import { deleteMapping, postURL } from "../api/api";
+import { useMappings } from "../hooks/useMappings";
 import URLForm from "../components/URLForm";
 import URLTable from "../components/URLTable";
 
 const Home = () => {
+  const { postMappingMutation, deleteMappingMutation } = useMappings();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    postURL(event.target.url.value).then((response) =>
-      console.log("Fix me post", response)
-    );
+    postMappingMutation.mutate(event.target.url.value);
   };
 
   const handleDelete = (id) => {
-    deleteMapping(id).then((response) =>
-      console.log("Fix me delete", response)
-    );
+    deleteMappingMutation.mutate(id);
   };
 
   return (
     <>
-      <h1>Link Shortening Tool</h1>
-      <p>Link shortening made easy</p>
+      <h1>QuickURL: Shrink Your Links </h1>
+      <p>Short links have never been so accessible</p>
       <URLForm onSubmit={handleSubmit} />
       <URLTable onDelete={handleDelete} />
     </>

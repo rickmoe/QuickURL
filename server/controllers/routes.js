@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   LinkMap.findOne({ _id: req.params.id }).then((mapping) => {
     if (mapping !== null) res.json(mapping);
-    else res.status(500).send(`Url ID $(req.params.id) not defined`);
+    else res.status(404).send(`Url ID $(req.params.id) not defined`);
   });
 });
 /*** Post ***/
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   LinkMap.deleteOne({ _id: req.params.id }).then((result) => {
     if (result?.acknowledged === true) res.json(result);
-    else res.status(500).send(`Unable to delete ID $(req.params.id)`);
+    else res.status(404).send(`Unable to delete ID $(req.params.id)`);
   });
 });
 /************************/

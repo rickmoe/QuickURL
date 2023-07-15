@@ -17,6 +17,11 @@
   /* Accent/CTA Colors */
   --color-salmon: hsl(6, 80%, 64%);
   --color-salmon-highlight: hsl(6, 80%, 56%);
+  /* Alert Colors */
+  --color-alert-success: hsl(120, 60%, 35%);
+  --color-alert-error: var(--color-salmon-highlight);
+  --color-alert-warning: hsl(53, 73%, 63%);
+  --color-alert-info: var(--color-teal-highlight);
 
   font-family: "Open Sans", sans-serif;
   line-height: 1.8;

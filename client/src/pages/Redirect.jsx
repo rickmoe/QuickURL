@@ -1,17 +1,16 @@
-import { Suspense, lazy } from "react";
-import { useGetURL } from "../hooks/useGetURL";
-const NotFound = lazy(() => import("./NotFound"));
+import { useLocation } from "react-router-dom";
+import { useRedirect } from "../hooks/useRedirect";
+import NotFound from "./NotFound";
 
 const Redirect = () => {
-  const [url, path] = useGetURL();
+  const path = useLocation().pathname;
+  const { status } = useRedirect(path.substring(1));
 
-  if (url === undefined) return <h1>Fetching...</h1>;
-  else if (url !== null) return null;
-  return (
-    <Suspense fallback={<h2>Loading</h2>}>
-      <NotFound path={path} />
-    </Suspense>
-  );
+  if (status === "loading") return <h1>Fetching...</h1>;
+  else if (status === "error") {
+    return <NotFound path={path} />;
+  }
+  return null;
 };
 
 export default Redirect;
