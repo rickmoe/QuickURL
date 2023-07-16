@@ -10,7 +10,9 @@ const SearchBar = () => {
       <input
         type="search"
         id="search"
-        onChange={(event) => dispatch(setSearch(event.target.value))}
+        onChange={(event) =>
+          dispatch(setSearch(event.target.value.toLowerCase()))
+        }
       />
     </>
   );

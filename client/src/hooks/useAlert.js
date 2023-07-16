@@ -6,7 +6,7 @@ export const useAlert = () => {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
 
-  const createTimedAlert = ({ duration, ...alert }) => {
+  const createTimedAlert = ({ duration = 1000, ...alert }) => {
     alert.id = count;
     setCount((prevCount) => prevCount + 1);
     dispatch(createAlert(alert));

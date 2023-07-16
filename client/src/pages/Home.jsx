@@ -1,26 +1,26 @@
-import { useState } from "react";
 import { useMappings } from "../hooks/useMappings";
 import URLForm from "../components/URLForm";
 import URLTable from "../components/URLTable";
 
 const Home = () => {
-  const { postMappingMutation, deleteMappingMutation } = useMappings();
+  const { postMappingMutation } = useMappings();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postMappingMutation.mutate(event.target.url.value);
-  };
-
-  const handleDelete = (id) => {
-    deleteMappingMutation.mutate(id);
+    console.log(event.target.password);
+    let mapping = { url: event.target.url.value };
+    if (event.target.password?.value && !event.target.password?.disabled) {
+      mapping.password = event.target.password.value;
+    }
+    postMappingMutation.mutate(mapping);
   };
 
   return (
     <>
       <h1>QuickURL: Shrink Your Links </h1>
-      <p>Short links have never been so accessible</p>
+      <p>Tiny links have never been so accessible</p>
       <URLForm onSubmit={handleSubmit} />
-      <URLTable onDelete={handleDelete} />
+      <URLTable />
     </>
   );
 };

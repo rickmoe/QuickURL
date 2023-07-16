@@ -1,24 +1,33 @@
+import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useAlert } from "../hooks/useAlert";
 import { useMappings } from "../hooks/useMappings";
-import { useSelector } from "react-redux";
 
-const URLTable = ({ onDelete }) => {
-  const { mappings, status } = useMappings();
+const URLTable = () => {
+  const { mappings, status, deleteMappingMutation } = useMappings();
   const { createTimedAlert } = useAlert();
-  const searchText = useSelector((state) => state.search);
+  const [password, setPassword] = useState("");
+  const [focusedId, setFocusedId] = useState("");
 
   const truncate = (string, maxLength) => {
     if (string.length <= maxLength) return string;
     return string.substring(0, maxLength - 3) + "...";
   };
 
-  const onCopy = () => {
-    createTimedAlert({
-      message: "Copied!",
-      className: "info",
-      duration: "1000",
-    });
+  const onCopy = () => createTimedAlert({ message: "Copied!" });
+
+  const onDelete = (id, password) => {
+    deleteMappingMutation.mutate(
+      { id, password },
+      {
+        onSuccess: () => {
+          setFocusedId("");
+        },
+        onError: (error) => {
+          if (error.response.status === 400) setFocusedId(id);
+        },
+      }
+    );
   };
 
   if (status === "loading") return <h4>Loading...</h4>;
@@ -30,7 +39,6 @@ const URLTable = ({ onDelete }) => {
   }
   return (
     <>
-      {/*<h1>{searchText}</h1>*/}
       <table>
         <thead>
           <tr id="table-head">
@@ -41,34 +49,51 @@ const URLTable = ({ onDelete }) => {
           </tr>
         </thead>
         <tbody>
-          {mappings
-            .filter((mapping) => {
-              return (
-                mapping._id.search(searchText) >= 0 ||
-                mapping.url.search(searchText) >= 0
-              );
-            })
-            .map((mapping) => (
-              <tr key={mapping._id}>
-                <td>{mapping._id}</td>
-                <td>
-                  <a target="_blank" href={mapping.url}>
-                    {truncate(mapping.url, 30)}
-                  </a>
-                </td>
-                <td>
-                  <CopyToClipboard
-                    text={`localhost:3000/${mapping._id}`}
-                    onCopy={onCopy}
-                  >
-                    <button>Copy</button>
-                  </CopyToClipboard>
-                </td>
-                <td>
-                  <button onClick={() => onDelete(mapping._id)}>Delete</button>
-                </td>
-              </tr>
-            ))}
+          {mappings.map((mapping) => (
+            <tr key={mapping._id}>
+              <td>
+                {mapping?.pinned === true ? "📌" : ""}
+                {mapping._id}
+              </td>
+              <td>
+                <a target="_blank" href={mapping.url}>
+                  {truncate(mapping.url, 30)}
+                </a>
+              </td>
+              <td>
+                <CopyToClipboard
+                  text={`localhost:3000/${mapping._id}`}
+                  onCopy={onCopy}
+                >
+                  <button>Copy</button>
+                </CopyToClipboard>
+              </td>
+              <td>
+                <form
+                  className={"delete-form"}
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    onDelete(
+                      mapping._id,
+                      focusedId === mapping._id ? password : null
+                    );
+                    setPassword("");
+                  }}
+                >
+                  <button>Delete</button>
+                  <input
+                    type="password"
+                    className={
+                      "delete-password" +
+                      (focusedId === mapping._id ? "" : " hide")
+                    }
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                </form>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>

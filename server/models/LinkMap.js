@@ -27,6 +27,19 @@ const linkMapSchema = new db.Schema({
     required: true,
     immutable: true,
   },
+  createdAt: {
+    type: Date,
+    default: () => Date.now(),
+    immutable: true,
+  },
+  pinned: {
+    type: Boolean,
+    immutable: true,
+  },
+  password: {
+    type: String,
+    immutable: true,
+  },
 });
 
 export default db.model("LinkMap", linkMapSchema);

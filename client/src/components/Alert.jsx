@@ -1,4 +1,4 @@
-const Alert = ({ message, className = "success", ...props }) => {
+const Alert = ({ message, className = "info", ...props }) => {
   return (
     <div className={"alert " + className} {...props}>
       {message}

@@ -1,7 +1,7 @@
 import SearchBar from "./SearchBar";
 import "./Navbar.css";
 
-const Navbar = (hasSearchBar) => {
+const Navbar = () => {
   return (
     <nav>
       <h1>
