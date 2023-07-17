@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LabeledInput from "./LabeledInput";
 import PasswordInput from "./PasswordInput";
 
 const URLForm = ({ onSubmit }) => {
@@ -7,16 +8,13 @@ const URLForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="url">Link</label>
-      <input type="url" id="url" name="url" required />
-      <label htmlFor="password" className={showAdvanced ? "" : "hide"}>
-        Secure with a password
-      </label>
+      <LabeledInput label="Link" id="url" name="url" type="url" required />
       <PasswordInput
+        label="Password"
         id="password"
         name="password"
         disabled={!showAdvanced}
-        className={showAdvanced ? "" : "hide"}
+        divClass={showAdvanced ? "" : "hide"}
       />
       <button type="button" onClick={toggleAdvanced}>
         Show Advanced

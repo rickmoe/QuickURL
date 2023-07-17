@@ -37,8 +37,8 @@ const URLTable = () => {
               <tr id="table-head">
                 <th>ID</th>
                 <th>URL</th>
-                <th>Copy</th>
-                <th>Delete</th>
+                <th style={{ width: "3rem" }}>Copy</th>
+                <th style={{ width: "3rem" }}>Delete</th>
               </tr>
             </thead>
             <tbody>

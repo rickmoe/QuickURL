@@ -1,0 +1,62 @@
+.input-div {
+  position: relative;
+  width: 7rem;
+  height: 1.5rem;
+  font-size: 1rem;
+}
+.input-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 0.25rem;
+}
+.input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--new-contrast-1);
+  padding-inline: 0.25rem;
+}
+.input:focus,
+.input:not(:placeholder-shown) {
+  outline: none;
+  color: var(--new-teal-accent);
+}
+.input:focus ~ label,
+.input:not(:placeholder-shown) ~ label {
+  color: var(--new-teal-accent);
+  font-size: 0.5rem;
+  transform: translateY(-.25rem);
+}
+.input-show {
+  position: absolute;
+  height: 1.1rem;
+  bottom: .1rem;
+  right: 0;
+}
+.underbar {
+  position: absolute;
+  top: 1.5rem;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 2px solid var(--new-teal-accent);
+  transform: scaleX(0);
+  transform-origin: 0;
+}
+.input:focus ~ .underbar,
+.input:not(:placeholder-shown) ~ .underbar {
+  transform: scaleX(1);
+}
+
+@media(prefers-reduced-motion: no-preference) {
+  .underbar {
+    transition: transform 0.2s ease-out;
+  }
+  .input-label {
+    transition: font-size 0.1s ease-out, transform 0.1s;
+  }
+}

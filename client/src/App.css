@@ -2,7 +2,7 @@
 
 :root {
   /* Primary Neutrals, Descending Theme Contrast */
-  --color-neutral-1: #f9f9f9;
+  --color-neutral-1: #fbfbfd;
   --color-neutral-2: #f0f0f0;
   --color-neutral-3: #ddd;
   /* Contrast Neutrals, Ascending Theme Contrast */
@@ -22,6 +22,15 @@
   --color-alert-error: var(--color-salmon-highlight);
   --color-alert-warning: hsl(53, 73%, 63%);
   --color-alert-info: var(--color-teal-highlight);
+
+  /* New Colors */
+  --new-neutral-1: #f6f6f6;
+  --new-neutral-2: #e4e4e4;
+  --new-neutral-3: #cccccc;
+  --new-neutral-pure: #8d8c8a;
+  --new-contrast-1: #363538;
+  --new-teal: #408697;
+  --new-teal-accent: #0fcff0;
 
   font-family: "Open Sans", sans-serif;
   line-height: 1.8;
@@ -86,7 +95,6 @@ a.button:hover {
 table {
   width: 100%;
   margin: 3rem 0;
-  border: 0.25px var(--color-contrast-3) solid;
   border-spacing: 0;
 }
 thead {
@@ -104,6 +112,7 @@ tbody tr:hover {
   height: 1.3rem;
   translate: 0 .2rem;
   margin-inline: 0.2rem;
+  display: inline;
 }
 .icon:hover {
   cursor: pointer;
@@ -111,25 +120,12 @@ tbody tr:hover {
 
 .delete-form {
   position: relative;
-  width: 100%;
   height: 100%;
 }
-.delete-div {
+.delete.input-div {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  
-}
-.delete-password {
-  width: 80%;
-  height: 1rem;
-}
-.delete-password-show {
-  height: 80%;
-  height: 1rem;
+  top: 0;
+  right: 0;
 }
 
 .hide {

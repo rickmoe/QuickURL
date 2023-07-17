@@ -34,10 +34,9 @@ const TableRow = ({ _id, url, pinned, focused, onCopy, onSubmit }) => {
           <input type="image" src={trashIcon} className="trash icon" />
           {focused && (
             <PasswordInput
-              divClass="delete-div"
-              className="delete-password"
-              buttonClass="delete-password-show"
+              id="delete-password"
               name="password"
+              divClass="delete"
               autoFocus
             />
           )}

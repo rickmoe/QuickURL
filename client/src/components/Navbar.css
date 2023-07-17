@@ -5,7 +5,7 @@
 nav {
   height: var(--nav-height);
   width: 100%;
-  background: var(--color-neutral-3);
+  background: var(--color-neutral-2);
   color: var(--color-base);
 
   position: fixed;
