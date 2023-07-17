@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PasswordInput from "./PasswordInput";
 
 const URLForm = ({ onSubmit }) => {
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -11,8 +12,7 @@ const URLForm = ({ onSubmit }) => {
       <label htmlFor="password" className={showAdvanced ? "" : "hide"}>
         Secure with a password
       </label>
-      <input
-        type="password"
+      <PasswordInput
         id="password"
         name="password"
         disabled={!showAdvanced}

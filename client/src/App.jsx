@@ -9,7 +9,7 @@ import {
 import "./App.css";
 import Navbar from "./components/Navbar";
 import AlertBox from "./components/AlertBox";
-const Home = lazy(() => import("./pages/Home"));
+import Home from "./pages/Home";
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Redirect = lazy(() => import("./pages/Redirect"));
 
