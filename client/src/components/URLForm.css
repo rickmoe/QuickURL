@@ -1,0 +1,37 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form .input-div {
+  --input-width: 9rem;
+  margin-bottom: .7rem;
+}
+.button-row {
+  margin-top: 0.2rem;
+  width: 100%;
+}
+.button-row input {
+  width: 35%;
+  margin-inline: 0.75rem;
+  padding: 0.2rem;
+  border: 2px solid var(--color-teal-accent);
+  color: var(--color-teal-accent);
+  background: none;
+
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.button-row input:hover {
+  cursor: pointer;
+  color: var(--color-teal-highlight);
+  border-color: var(--color-teal-highlight);
+  scale: 1.15;
+}
+
+@media(prefers-reduced-motion: no-preference) {
+  .button-row input {
+    transition: scale 0.25s;
+  }
+}

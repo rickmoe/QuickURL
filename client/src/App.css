@@ -1,19 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
 :root {
   /* Primary Neutrals, Descending Theme Contrast */
-  --color-neutral-1: #fbfbfd;
-  --color-neutral-2: #f0f0f0;
-  --color-neutral-3: #ddd;
+  --color-neutral-1: #f6f6f6;
+  --color-neutral-2: #e4e4e4;
+  --color-neutral-3: #ccc;
+  --color-neutral: #8d8c8a;
   /* Contrast Neutrals, Ascending Theme Contrast */
-  --color-contrast-1: #000;
-  --color-contrast-2: #202020;
-  --color-contrast-3: #444;
+  --color-contrast-1: #363538;
   /* Base/Brand Colors */
-  --color-teal-muted: hsl(200, 57%, 28%);
-  --color-teal: hsl(200, 57%, 35%);
-  --color-teal-highlight: hsl(200, 57%, 55%);
-  --color-teal-blend: hsl(200, 57%, 90%);
+  --color-teal: #408697;
+  --color-teal-accent: #19BDE6;
+  --color-teal-highlight: hsl(192, 80%, 42%);
+  --color-teal-blend: #E2EFF3;
   /* Accent/CTA Colors */
   --color-salmon: hsl(6, 80%, 64%);
   --color-salmon-highlight: hsl(6, 80%, 56%);
@@ -23,17 +20,8 @@
   --color-alert-warning: hsl(53, 73%, 63%);
   --color-alert-info: var(--color-teal-highlight);
 
-  /* New Colors */
-  --new-neutral-1: #f6f6f6;
-  --new-neutral-2: #e4e4e4;
-  --new-neutral-3: #cccccc;
-  --new-neutral-pure: #8d8c8a;
-  --new-contrast-1: #363538;
-  --new-teal: #408697;
-  --new-teal-accent: #0fcff0;
-
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+  line-height: 1.4;
 }
 
 *,
@@ -47,87 +35,45 @@
 main {
   margin-top: var(--nav-height);
   min-height: calc(100vh - var(--nav-height));
-  padding: 4% 10% 0;
+  padding: 7vh 5vw 4vh;
   
   background: var(--color-neutral-1);
   color: var(--color-contast-1);
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+h1, h2, h4 {
+  font-weight: normal;
+}
 h1 {
-  color: var(--color-teal);
-  opacity: 0.9;
+  font-size: 4rem;
+}
+h2 {
+  font-size: 1.5rem;
+  color: var(--color-neutral);
 }
 h4 {
   margin: 3rem 0;
 }
-
 p {
-  opacity: 0.8;
+  font-size: 1.25rem;
 }
-
-.emphasize {
-  font-weight: bold;
+b {
+  font-weight: 600;
   color: var(--color-teal);
-  opacity: 1;
 }
-
 a {
   text-decoration: none;
-  color: var(--color-teal-muted);
+  color: inherit;
 }
 a:hover {
-  color: var(--color-teal-highlight);
-}
-
-a.button {
-  padding: 0.1rem 0.5rem;
-  border-radius: 0.8rem;
-  
-  background: var(--color-salmon);
-  color: var(--color-neutral-1);
-  opacity: 1;
-}
-a.button:hover {
-  background-color: var(--color-salmon-highlight);
-}
-
-table {
-  width: 100%;
-  margin: 3rem 0;
-  border-spacing: 0;
-}
-thead {
-  background: var(--color-neutral-3);
-  color: var(--color-teal);
-}
-tbody tr:nth-last-child(odd) {
-  background: var(--color-neutral-2);
-}
-tbody tr:hover {
-  background: var(--color-teal-blend);
-}
-
-.icon {
-  height: 1.3rem;
-  translate: 0 .2rem;
-  margin-inline: 0.2rem;
-  display: inline;
-}
-.icon:hover {
-  cursor: pointer;
-}
-
-.delete-form {
-  position: relative;
-  height: 100%;
-}
-.delete.input-div {
-  position: absolute;
-  top: 0;
-  right: 0;
+  color: var(--color-teal-accent);
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
 }

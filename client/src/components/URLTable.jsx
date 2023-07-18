@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAlert } from "../hooks/useAlert";
 import { useMappings } from "../hooks/useMappings";
 import TableRow from "./TableRow";
+import "./URLTable.css";
 
 const URLTable = () => {
   const { mappings, status, deleteMappingMutation } = useMappings();
@@ -33,6 +34,12 @@ const URLTable = () => {
           <h4>No links found. Try adding one!</h4>
         ) : (
           <table>
+            <colgroup>
+              <col></col>
+              <col></col>
+              <col></col>
+              <col></col>
+            </colgroup>
             <thead>
               <tr id="table-head">
                 <th>ID</th>

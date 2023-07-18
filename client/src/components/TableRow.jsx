@@ -2,23 +2,18 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import PasswordInput from "./PasswordInput";
 import copyIcon from "../assets/copy.svg";
 import trashIcon from "../assets/trash.svg";
-import pinIcon from "../assets/pin.svg";
-
-const truncate = (string, maxLength) => {
-  if (string.length <= maxLength) return string;
-  return string.substring(0, maxLength - 3) + "...";
-};
+import pinIcon from "../assets/pin.png";
 
 const TableRow = ({ _id, url, pinned, focused, onCopy, onSubmit }) => {
   return (
     <tr key={_id}>
       <td>
-        {pinned && <img src={pinIcon} className="icon" />}
+        {pinned && <img src={pinIcon} className="pin" />}
         {_id}
       </td>
       <td>
         <a target="_blank" href={url}>
-          {truncate(url, 30)}
+          {url}
         </a>
       </td>
       <td>

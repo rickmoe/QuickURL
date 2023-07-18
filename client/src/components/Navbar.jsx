@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav>
       <h1>
-        Quick<span className="emphasize">URL</span>
+        Quick<b>URL</b>
       </h1>
       <SearchBar />
     </nav>

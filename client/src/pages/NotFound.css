@@ -1,0 +1,11 @@
+a.button {
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.8rem;
+  
+  background: var(--color-teal-accent);
+  color: var(--color-neutral-1);
+  opacity: 1;
+}
+a.button:hover {
+  background-color: var(--color-teal-highlight);
+}

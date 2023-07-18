@@ -13,7 +13,7 @@
   padding: 0.125rem 1rem;
   border-radius: 2rem 0rem;
   color: var(--color-neutral-2);
-  border: 1px var(--color-contrast-2) solid;
+  border: 1px var(--color-contrast-1) solid;
 }
 .alert.success {
   background-color: var(--color-alert-success);

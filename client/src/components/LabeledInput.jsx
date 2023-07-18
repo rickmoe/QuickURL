@@ -1,4 +1,4 @@
-import "./StyledInputs.css";
+import "./StyledInput.css";
 
 const LabeledInput = ({
   id,
@@ -26,7 +26,7 @@ const LabeledInput = ({
         </label>
       )}
       {children}
-      <div class={`underbar ${sharedClass}`} />
+      <div className={`underbar ${sharedClass}`} />
     </div>
   );
 };

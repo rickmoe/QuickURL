@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LabeledInput from "./LabeledInput";
 import PasswordInput from "./PasswordInput";
+import "./URLForm.css";
 
 const URLForm = ({ onSubmit }) => {
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -16,10 +17,10 @@ const URLForm = ({ onSubmit }) => {
         disabled={!showAdvanced}
         divClass={showAdvanced ? "" : "hide"}
       />
-      <button type="button" onClick={toggleAdvanced}>
-        Show Advanced
-      </button>
-      <input type="submit" value="Submit" />
+      <div class="button-row">
+        <input type="button" onClick={toggleAdvanced} value="Advanced"></input>
+        <input type="submit" value="Submit" />
+      </div>
     </form>
   );
 };

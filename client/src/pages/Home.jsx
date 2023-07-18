@@ -1,6 +1,7 @@
 import { useMappings } from "../hooks/useMappings";
 import URLForm from "../components/URLForm";
 import URLTable from "../components/URLTable";
+import "./Home.css";
 
 const Home = () => {
   const { postMappingMutation } = useMappings();
@@ -17,9 +18,14 @@ const Home = () => {
 
   return (
     <>
-      <h1>QuickURL: Shrink Your Links </h1>
-      <p>Tiny links have never been so accessible</p>
-      <URLForm onSubmit={handleSubmit} />
+      <div className="title-div">
+        <h1>QuickURL</h1>
+        <h2>Shrink your links</h2>
+      </div>
+      <div className="form-div">
+        <p>Tiny links have never been so accessible</p>
+        <URLForm onSubmit={handleSubmit} />
+      </div>
       <URLTable />
     </>
   );

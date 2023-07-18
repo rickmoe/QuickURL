@@ -1,0 +1,72 @@
+.input-div {
+  --input-width: 7rem;
+  --input-height: 1.5rem;
+  --input-font-size: 1rem;
+
+  position: relative;
+  width: var(--input-width);
+  height: var(--input-height);
+  font-size: var(--input-font-size);
+}
+
+.input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--input-height);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--color-contrast-1);
+  padding-inline: calc(var(--input-height) / 4);
+}
+.input:focus,
+.input:not(:placeholder-shown) {
+  outline: none;
+  color: var(--color-teal-accent);
+}
+
+.input-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: var(--input-height);
+  padding-left: calc(var(--input-font-size) / 4);
+  color: var(--color-neutral);
+}
+.input:focus ~ label,
+.input:not(:placeholder-shown) ~ label {
+  color: var(--color-teal-accent);
+  font-size: max(calc(var(--input-font-size) * 2 / 3), 0.8rem);
+  transform: translateY(calc(var(--input-height) * -0.4));
+}
+
+.underbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 2px solid var(--color-teal-accent);
+  transform: scaleX(0);
+  transform-origin: 0;
+}
+.input:focus ~ .underbar,
+.input:not(:placeholder-shown) ~ .underbar {
+  transform: scaleX(1);
+}
+
+.input-show {
+  position: absolute;
+  height: calc(var(--input-font-size) * 1.1);
+  bottom: .1rem;
+  right: 0;
+}
+
+@media(prefers-reduced-motion: no-preference) {
+  .underbar {
+    transition: transform 0.2s ease-out;
+  }
+  .input-label {
+    transition: font-size 0.1s ease-out, transform 0.1s;
+  }
+}
