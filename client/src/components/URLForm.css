@@ -10,7 +10,7 @@ form {
   align-items: center;
 }
 form .input-div {
-  --input-width: 9rem;
+  --input-width: calc(var(--font-size-form) * 8);
   margin-bottom: .7rem;
 }
 .button-row {
@@ -36,7 +36,7 @@ form .input-div {
   scale: 1.15;
 }
 
-@media(prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .button-row input {
     transition: scale 0.25s;
   }
@@ -51,5 +51,10 @@ form .input-div {
     transform-origin: 100% 100%;
     transform: scaleY(0);
     height: 0;
+  }
+}
+@media (min-width: 660px) {
+  form .input-div {
+    --input-width: calc(var(--font-size-form) * 13.5);
   }
 }

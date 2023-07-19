@@ -1,7 +1,7 @@
 .input-div {
-  --input-width: calc(var(--font-size-form) * 7);
-  --input-height: calc(var(--font-size-form) * 1.5);
   --input-font-size: var(--font-size-form);
+  --input-width: calc(var(--input-font-size) * 7);
+  --input-height: calc(var(--input-font-size) * 1.5);
 
   position: relative;
   width: var(--input-width);
