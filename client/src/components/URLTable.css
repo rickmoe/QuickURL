@@ -1,20 +1,21 @@
 table {
-  table-layout: fixed;
   width: 100%;
-  margin: 3rem 0;
+  margin-bottom: auto;
+  table-layout: fixed;
   border-spacing: 0;
+
+  font-size: var(--font-size-table);
   text-align: left;
-  font-size: 1rem;
 }
 
 colgroup col:first-child {
-  width: 5.5rem;
+  width: calc(var(--font-size-table) * 6);
 }
 colgroup col:nth-child(3) {
-  width: 4rem;
+  width: calc(var(--font-size-table) * 4);
 }
 colgroup col:nth-child(4) {
-  width: 4rem;
+  width: calc(var(--font-size-table) * 4);
 }
 
 thead {
@@ -33,10 +34,8 @@ th {
 }
 th,
 td {
-  padding: .4rem .25rem;
-}
-td:nth-child(1) {
-  padding-left: .5rem;
+  padding: calc(var(--font-size-table) * .4) calc(var(--font-size-table) / 3);
+  position: relative;
 }
 td:nth-child(2) {
   white-space: nowrap;
@@ -44,25 +43,25 @@ td:nth-child(2) {
   text-overflow: ellipsis;
 }
 th:nth-child(3),
-td:nth-child(3) {
-  text-align: center;
-}
+td:nth-child(3),
 th:nth-child(4),
 td:nth-child(4) {
   text-align: center;
 }
 
 .icon {
-  height: 1.3rem;
+  height: calc(var(--font-size-table) * 1.4);
   display: inline;
 }
 .icon:hover {
   cursor: pointer;
 }
 .pin {
-  height: 1.3rem;
-  translate: -.5rem .25rem;
-  margin-inline: -0.5rem -0.7rem;
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: calc(var(--font-size-table) * 1.4);
+  translate: -50% 0;
 }
 .copy {
   translate: 0 0.2rem;

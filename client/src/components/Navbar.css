@@ -1,7 +1,5 @@
 :root {
-  --nav-height: 3.5rem;
-  --font-size-nav-h1: 2.5rem;
-  --font-size-nav: 1.5rem;
+  --nav-height: clamp(3.5rem, 8vw, 5rem);
 }
 
 nav {
@@ -10,29 +8,42 @@ nav {
   color: var(--color-contrast-1);
   background: var(--color-neutral-1);
   border-bottom: 1px solid var(--color-neutral);
-  padding: 0 max(1rem, 3vw);
-  font-size: 2.5rem;
+  padding: 0 calc(10vw - 1.5rem);
   line-height: 1;
 
   position: fixed;
   top: 0;
   left: 0;
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: max-content 1fr;
 }
 
 nav h1 {
-  font-size: var(--font-size-nav-h1);
-  transform: translateY(calc(var(--font-size-nav-h1) * 0.15));
+  font-size: var(--font-size-nav-title);
+  transform: translateY(.375rem);
 }
 
 nav .input-div {
-  --input-width: 8rem;
-  --input-font-size: 1.3rem;
+  --input-width: calc(var(--font-size-nav) * 6);
+  --input-font-size: var(--font-size-nav);
+  --input-height: calc(var(--font-size-nav) * 1.15);
+  margin-left: auto;
 }
 
 nav h1,
 nav .input-div {
   margin-block: auto 0.5rem;
+}
+
+@media (min-width: 550px) {
+  nav {
+    grid-template-columns: 1fr max-content 1fr;
+  }
+  nav::before {
+    content: "";
+  }
+  nav h1 {
+    text-align: center;
+  }
 }

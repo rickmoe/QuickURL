@@ -1,8 +1,38 @@
-.form-div {
-  margin-top: 12vw;
-  width: 100%;
+main {
+  display: grid;
+  grid-template-rows: 19vh 25vh auto;
 }
-.form-div p {
-  margin: 0 auto .8rem;
-  width: 75%;
+
+h1 {
+  font-size: var(--font-size-title);
+  line-height: 1;
+}
+h2 {
+  font-size: var(--font-size-subtitle);
+  color: var(--color-neutral);
+}
+h4 {
+  font-size: var(--font-size-subtitle);
+  margin: 3rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: var(--color-teal-accent);
+}
+
+@media (min-width: 660px) {
+  main {
+    padding-top: calc(33vh - var(--nav-height) - var(--font-size-title));
+
+    grid-template-rows: calc(4 * var(--font-size-title)) auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .table-div {
+    grid-column: span 2;
+  }
 }

@@ -17,7 +17,7 @@ const LabeledInput = ({
         id={id}
         type={inputType}
         className={`input ${sharedClass} ${inputClass}`}
-        placeholder=""
+        placeholder=" "
         {...props}
       />
       {label !== "" && (

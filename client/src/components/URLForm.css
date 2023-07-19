@@ -1,3 +1,9 @@
+.form-title {
+  margin: 0 auto .8rem;
+  width: calc(var(--font-size-form-title) * 13);
+  font-size: var(--font-size-form-title);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -12,15 +18,15 @@ form .input-div {
   width: 100%;
 }
 .button-row input {
-  width: 35%;
-  margin-inline: 0.75rem;
-  padding: 0.2rem;
+  width: calc(var(--font-size-form-button) * 6.25);
+  margin-inline: 0.67rem;
+  padding: calc(var(--font-size-form-button) / 7);
   border: 2px solid var(--color-teal-accent);
   color: var(--color-teal-accent);
   background: none;
 
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: var(--font-size-form-button);
   font-weight: 600;
 }
 .button-row input:hover {
@@ -33,5 +39,17 @@ form .input-div {
 @media(prefers-reduced-motion: no-preference) {
   .button-row input {
     transition: scale 0.25s;
+  }
+
+  form .input-div {
+    transition: height 0.2s, transform 0.2s 0.3s;
+    transform-origin: 0% 0%;
+  }
+  form .input-div.hide {
+    visibility: visible;
+    transition: transform 0.2s, height 0.2s 0.3s;
+    transform-origin: 100% 100%;
+    transform: scaleY(0);
+    height: 0;
   }
 }

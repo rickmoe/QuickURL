@@ -6,22 +6,30 @@
   --color-neutral: #8d8c8a;
   /* Contrast Neutrals, Ascending Theme Contrast */
   --color-contrast-1: #363538;
-  /* Base/Brand Colors */
+  /* Base/Brand + CTA Colors */
   --color-teal: #408697;
   --color-teal-accent: #19BDE6;
   --color-teal-highlight: hsl(192, 80%, 42%);
   --color-teal-blend: #E2EFF3;
-  /* Accent/CTA Colors */
-  --color-salmon: hsl(6, 80%, 64%);
-  --color-salmon-highlight: hsl(6, 80%, 56%);
-  /* Alert Colors */
-  --color-alert-success: hsl(120, 60%, 35%);
-  --color-alert-error: var(--color-salmon-highlight);
-  --color-alert-warning: hsl(53, 73%, 63%);
-  --color-alert-info: var(--color-teal-highlight);
+  /* Alert/Status Colors */
+  --color-success: hsl(120, 60%, 35%);
+  --color-error: hsl(6, 80%, 56%);
+  --color-warning: hsl(53, 73%, 63%);
+  --color-info: var(--color-teal-highlight);
 
+  /* Font Sizes */
+  --font-size-title: clamp(4rem, calc(4vw + 2.2rem), 7rem);
+  --font-size-subtitle: clamp(1.5rem, calc(2vw + .6rem), 3rem);
+  --font-size-nav-title: clamp(2.5rem, calc(2vw + 1.6rem), 4rem);
+  --font-size-nav: clamp(1.3rem, calc(.93vw + .88rem), 2rem);
+  --font-size-form-title: clamp(1.25rem, calc(1vw + .8rem), 2rem);
+  --font-size-form-button: clamp(1.25rem, calc(.33vw + 1.1rem), 1.5rem);
+  --font-size-form: clamp(1rem, calc(.67vw + .7rem), 1.5rem);
+  --font-size-table: clamp(1rem, calc(1.3vw + .4rem), 2rem);
+
+  --line-height: 1.4;
   font-family: "Inter", sans-serif;
-  line-height: 1.4;
+  line-height: var(--line-height);
 }
 
 *,
@@ -35,43 +43,19 @@
 main {
   margin-top: var(--nav-height);
   min-height: calc(100vh - var(--nav-height));
-  padding: 7vh 5vw 4vh;
+  padding: 7vh clamp(4vw, calc(12vw - 2.75rem), 8vw) 4vh;
   
   background: var(--color-neutral-1);
   color: var(--color-contast-1);
   text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 h1, h2, h4 {
   font-weight: normal;
 }
-h1 {
-  font-size: 4rem;
-}
-h2 {
-  font-size: 1.5rem;
-  color: var(--color-neutral);
-}
-h4 {
-  margin: 3rem 0;
-}
-p {
-  font-size: 1.25rem;
-}
 b {
   font-weight: 600;
   color: var(--color-teal);
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-a:hover {
-  color: var(--color-teal-accent);
 }
 
 .hide {

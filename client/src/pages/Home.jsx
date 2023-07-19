@@ -23,10 +23,11 @@ const Home = () => {
         <h2>Shrink your links</h2>
       </div>
       <div className="form-div">
-        <p>Tiny links have never been so accessible</p>
         <URLForm onSubmit={handleSubmit} />
       </div>
-      <URLTable />
+      <div className="table-div">
+        <URLTable />
+      </div>
     </>
   );
 };
