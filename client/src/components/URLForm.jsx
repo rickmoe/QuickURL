@@ -19,7 +19,7 @@ const URLForm = ({ onSubmit }) => {
           disabled={!showAdvanced}
           divClass={showAdvanced ? "" : "hide"}
         />
-        <div class="button-row">
+        <div className="button-row">
           <input
             type="button"
             onClick={toggleAdvanced}

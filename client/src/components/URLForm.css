@@ -53,6 +53,7 @@ form .input-div {
     height: 0;
   }
 }
+
 @media (min-width: 660px) {
   form .input-div {
     --input-width: calc(var(--font-size-form) * 13.5);

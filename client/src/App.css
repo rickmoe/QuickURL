@@ -8,8 +8,9 @@
   --color-contrast-1: #363538;
   /* Base/Brand + CTA Colors */
   --color-teal: #408697;
-  --color-teal-accent: #19BDE6;
-  --color-teal-highlight: hsl(192, 80%, 42%);
+  --color-teal-accent: #4BC0DD;
+  --color-teal-highlight: #19A8E6;
+  --color-teal-blend-2: #98D4E7;
   --color-teal-blend: #E2EFF3;
   /* Alert/Status Colors */
   --color-success: hsl(120, 60%, 35%);

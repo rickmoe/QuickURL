@@ -1,6 +1,6 @@
 main {
   display: grid;
-  grid-template-rows: 19vh 25vh auto;
+  grid-template-rows: 19vh 30vh auto;
 }
 
 h1 {
@@ -27,7 +27,7 @@ a:hover {
 
 @media (min-width: 660px) {
   main {
-    padding-top: calc(33vh - var(--nav-height) - var(--font-size-title));
+    padding-top: calc(27vh - var(--nav-height) - var(--font-size-title) + 4rem);
 
     grid-template-rows: calc(4 * var(--font-size-title)) auto;
     grid-template-columns: 1fr 1fr;

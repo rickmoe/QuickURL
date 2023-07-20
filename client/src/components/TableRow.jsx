@@ -4,7 +4,7 @@ import copyIcon from "../assets/copy.svg";
 import trashIcon from "../assets/trash.svg";
 import pinIcon from "../assets/pin.png";
 
-const TableRow = ({ _id, url, pinned, focused, onCopy, onSubmit }) => {
+const TableRow = ({ _id, url, pinned, focused, onCopy, onDelete }) => {
   return (
     <tr key={_id}>
       <td>
@@ -24,7 +24,7 @@ const TableRow = ({ _id, url, pinned, focused, onCopy, onSubmit }) => {
       <td>
         <form
           className={"delete-form"}
-          onSubmit={(event) => onSubmit(event, _id)}
+          onSubmit={(event) => onDelete(event, _id)}
         >
           <input type="image" src={trashIcon} className="trash icon" />
           {focused && (

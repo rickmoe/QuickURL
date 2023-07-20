@@ -5,13 +5,19 @@ import TableRow from "./TableRow";
 import "./URLTable.css";
 
 const URLTable = () => {
-  const { mappings, status, deleteMappingMutation } = useMappings();
-  const { createTimedAlert } = useAlert();
+  const {
+    mappingData,
+    status,
+    hasNextPage,
+    fetchNextPage,
+    deleteMappingMutation,
+  } = useMappings();
+  const { createTimedAlert, createAnimatedTimedAlert } = useAlert();
   const [focusedId, setFocusedId] = useState("");
 
-  const onCopy = () => createTimedAlert({ message: "Copied!" });
+  const onCopy = () => createAnimatedTimedAlert({ message: "Copied!" });
 
-  const onSubmit = (event, id) => {
+  const onDelete = (event, id) => {
     event.preventDefault();
     deleteMappingMutation.mutate(
       { id, password: event.target?.password?.value },
@@ -30,38 +36,50 @@ const URLTable = () => {
       {status === "loading" && <h4>Loading...</h4>}
       {status === "error" && <h4>Error encountered while loading mappings</h4>}
       {status === "success" &&
-        (mappings.length === 0 ? (
+        (mappingData.pages[0].remaining === 0 ? (
           <h4>No links found. Try adding one!</h4>
         ) : (
-          <table>
-            <colgroup>
-              <col></col>
-              <col></col>
-              <col></col>
-              <col></col>
-            </colgroup>
-            <thead>
-              <tr id="table-head">
-                <th>ID</th>
-                <th>URL</th>
-                <th style={{ width: "3rem" }}>Copy</th>
-                <th style={{ width: "3rem" }}>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mappings.map(({ _id, url, pinned }) => (
-                <TableRow
-                  key={_id}
-                  _id={_id}
-                  url={url}
-                  pinned={pinned}
-                  focused={focusedId === _id}
-                  onCopy={onCopy}
-                  onSubmit={(event) => onSubmit(event, _id)}
-                />
-              ))}
-            </tbody>
-          </table>
+          <>
+            <table>
+              <colgroup>
+                <col></col>
+                <col></col>
+                <col></col>
+                <col></col>
+              </colgroup>
+              <thead>
+                <tr id="table-head">
+                  <th>ID</th>
+                  <th>URL</th>
+                  <th style={{ width: "3rem" }}>Copy</th>
+                  <th style={{ width: "3rem" }}>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mappingData.pages.map((page) =>
+                  page.mappings.map(({ _id, url, pinned }) => (
+                    <TableRow
+                      key={_id}
+                      _id={_id}
+                      url={url}
+                      pinned={pinned}
+                      focused={focusedId === _id}
+                      onCopy={onCopy}
+                      onDelete={(event) => onDelete(event, _id)}
+                    />
+                  ))
+                )}
+              </tbody>
+            </table>
+            <p>
+              {hasNextPage && (
+                <button className="table-load-button" onClick={fetchNextPage}>
+                  Show More ({mappingData.pages.slice(-1)[0].remaining} Links
+                  Remaining)
+                </button>
+              )}
+            </p>
+          </>
         ))}
     </>
   );

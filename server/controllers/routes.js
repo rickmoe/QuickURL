@@ -6,12 +6,45 @@ const router = express.Router();
 /******* Routes *********/
 /*** Get ***/
 router.get("/", async (req, res) => {
-  // const { page, pageSize } = req.query;
-  // const {}
-  const mappings = await LinkMap.find()
-    .sort({ pinned: -1, createdAt: -1 })
-    .select({ _id: 1, url: 1, pinned: 1 });
-  res.send(mappings);
+  console.log(req.query);
+  const { page, "page-size": pageSize, search: search = "" } = req.query;
+  let response = {};
+  if (page && pageSize) {
+    // Start is inlusive, end is not
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = page * pageSize;
+    try {
+      response.mappings = await LinkMap.find({
+        $or: [
+          { _id: { $regex: search, $options: "i" } },
+          { url: { $regex: search, $options: "i" } },
+        ],
+      })
+        .limit(pageSize)
+        .skip(startIndex)
+        .sort({ pinned: -1, createdAt: -1 })
+        .select({ _id: 1, url: 1, pinned: 1 });
+
+      response.remaining = await LinkMap.countDocuments(
+        {
+          $or: [
+            { _id: { $regex: search, $options: "i" } },
+            { url: { $regex: search, $options: "i" } },
+          ],
+        },
+        { skip: endIndex }
+      );
+      if (response.remaining > 0) response.nextPage = parseInt(page) + 1;
+    } catch (error) {
+      res.sendStatus(400);
+      return;
+    }
+  } else {
+    response = await LinkMap.find()
+      .sort({ pinned: -1, createdAt: -1 })
+      .select({ _id: 1, url: 1, pinned: 1 });
+  }
+  res.send(response);
 });
 
 router.get("/:id", async (req, res) => {

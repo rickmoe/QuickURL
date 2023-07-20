@@ -19,21 +19,25 @@ colgroup col:nth-child(4) {
 }
 
 thead {
-  background: var(--color-neutral-3);
+  background-color: var(--color-neutral-3);
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 1;
 }
 
 tbody tr:nth-child(even) {
-  background: var(--color-neutral-2);
+  background-color: var(--color-neutral-2);
 }
 tbody tr:hover {
-  background: var(--color-teal-blend);
+  background-color: var(--color-teal-blend);
 }
 
 th {
   font-weight: normal;
 }
 th,
-td {
+td,
+.table-load-button {
   padding: calc(var(--font-size-table) * .4) calc(var(--font-size-table) / 3);
   position: relative;
 }
@@ -61,7 +65,8 @@ td:nth-child(4) {
   left: 0;
   top: 20%;
   height: calc(var(--font-size-table) * 1.4);
-  translate: -50% 0;
+  translate: -70% 0;
+  rotate: -30deg;
 }
 .copy {
   translate: 0 0.2rem;
@@ -75,4 +80,18 @@ td:nth-child(4) {
   position: absolute;
   top: 0;
   right: 0;
+  background-color: var(--color-neutral-1);
+}
+
+.table-load-button {
+  width: 100%;
+  font-size: var(--font-size-table);
+  border: none;
+  background-color: var(--color-neutral-3);
+  text-align: left;
+  padding-inline: 7%;
+}
+thead tr:hover,
+.table-load-button:hover {
+  background-color: var(--color-teal-blend-2);
 }

@@ -10,11 +10,21 @@ export const alertSlice = createSlice({
     createAlert: (state, { payload }) => {
       state.push(payload);
     },
-    deleteAlert: (state, { payload: id }) =>
-      state.filter((alert) => alert.id !== id),
+    deleteAlert: (state, { payload: id }) => {
+      return state.filter((alert) => alert.id !== id);
+    },
+    updateAlert: (state, { payload: { id, toChange } }) => {
+      state.map((alert) => {
+        if (alert.id !== id) return alert;
+        for (const attribute in toChange) {
+          alert[attribute] = toChange[attribute];
+        }
+        return alert;
+      });
+    },
     /**************************/
   },
 });
 
-export const { createAlert, deleteAlert } = alertSlice.actions;
+export const { createAlert, deleteAlert, updateAlert } = alertSlice.actions;
 export default alertSlice.reducer;
