@@ -15,16 +15,28 @@ const URLTable = () => {
   const { createAnimatedTimedAlert } = useAlert();
   const [focusedId, setFocusedId] = useState("");
 
-  const onCopy = () => createAnimatedTimedAlert({ message: "Copied!" });
+  const onCopy = () => createAnimatedTimedAlert({ message: "Copied" });
 
   const onDelete = (event, id) => {
     event.preventDefault();
     deleteMappingMutation.mutate(
       { id, password: event.target?.password?.value },
       {
-        onSuccess: () => setFocusedId(""),
+        onSuccess: () => {
+          setFocusedId("");
+          createAnimatedTimedAlert({
+            message: "Link Deleted",
+            type: "success",
+          });
+        },
         onError: (error) => {
-          if (error.response.status === 400) setFocusedId(id);
+          if (error.response.status === 400) {
+            setFocusedId(id);
+            createAnimatedTimedAlert({
+              message: "Password Required",
+              type: "error",
+            });
+          }
         },
       }
     );
@@ -36,7 +48,8 @@ const URLTable = () => {
       {status === "loading" && <h4>Loading...</h4>}
       {status === "error" && <h4>Error encountered while loading mappings</h4>}
       {status === "success" &&
-        (mappingData.pages[0].remaining === 0 ? (
+        (mappingData.pages[0].remaining === 0 &&
+        mappingData.pages[0].mappings.length === 0 ? (
           <h4>No links found. Try adding one!</h4>
         ) : (
           <>

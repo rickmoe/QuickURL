@@ -69,8 +69,12 @@ router.post("/", async (req, res) => {
 /*** Delete ***/
 router.delete("/:id", async (req, res) => {
   const password = req.body.password;
-  const { password: hash } = await LinkMap.findOne({ _id: req.params.id });
-  if (hash && (!password || !(await compare(password, hash)))) {
+  const mapping = await LinkMap.findOne({ _id: req.params.id });
+  if (!mapping) {
+    res.sendStatus(404);
+    return;
+  }
+  if (mapping.hash && (!password || !(await compare(password, mapping.hash)))) {
     res.sendStatus(400);
     return;
   }

@@ -26,7 +26,7 @@ export const useAlert = () => {
   };
 
   const createAnimatedTimedAlert = ({
-    duration = 5000,
+    duration = 2000,
     fadeTime = 500,
     ...alert
   }) => {

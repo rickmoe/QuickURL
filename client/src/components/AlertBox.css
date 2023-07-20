@@ -6,10 +6,13 @@
 
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: calc(var(--font-size-subtitle) / 8);
 }
 
 .alert {
+  width: max-content;
+  max-width: calc(var(--font-size-subtitle) * 12);
   font-size: var(--font-size-subtitle);
   padding: calc(var(--font-size-subtitle) / 8) calc(var(--font-size-subtitle) * .6);
   border-radius: calc(var(--font-size-subtitle) * 1.5) 0rem;
