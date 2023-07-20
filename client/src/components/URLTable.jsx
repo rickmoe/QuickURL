@@ -12,7 +12,7 @@ const URLTable = () => {
     fetchNextPage,
     deleteMappingMutation,
   } = useMappings();
-  const { createTimedAlert, createAnimatedTimedAlert } = useAlert();
+  const { createAnimatedTimedAlert } = useAlert();
   const [focusedId, setFocusedId] = useState("");
 
   const onCopy = () => createAnimatedTimedAlert({ message: "Copied!" });

@@ -26,9 +26,8 @@ export const useAlert = () => {
   };
 
   const createAnimatedTimedAlert = ({
-    duration = 1000,
-    fadeIn = 500,
-    fadeOut = 500,
+    duration = 5000,
+    fadeTime = 500,
     ...alert
   }) => {
     alert.duration = duration;
@@ -46,11 +45,21 @@ export const useAlert = () => {
               toChange: { className: `${classesParam}` },
             })
           ),
-        delay: 0,
+        delay: 25,
+      },
+      {
+        callback: () =>
+          dispatch(
+            updateAlert({
+              id: alert.id,
+              toChange: { className: `${classesParam} faded` },
+            })
+          ),
+        delay: duration - fadeTime,
       },
       {
         callback: () => dispatch(deleteAlert(alert.id)),
-        delay: duration,
+        delay: fadeTime,
       },
     ]);
   };

@@ -5,6 +5,8 @@ import "./AlertBox.css";
 const AlertBox = () => {
   const alerts = useSelector((state) => state.alerts);
 
+  console.log(alerts);
+
   return (
     <section className="alert-box">
       {alerts.map(({ id, ...alert }) => (

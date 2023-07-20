@@ -15,8 +15,9 @@
   border-radius: calc(var(--font-size-subtitle) * 1.5) 0rem;
   color: var(--color-neutral-2);
   border: 1px var(--color-contrast-1) solid;
-  transition: all 0.5s ease-in-out;
+  z-index: 1;
 }
+
 .alert.success {
   background-color: var(--color-success);
 }
@@ -29,4 +30,17 @@
 }
 .alert.info {
   background-color: var(--color-info);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .alert {
+    max-height: 100vh;
+    transition: all 0.5s ease-in-out, max-height 5s linear;
+    transform-origin: 100% 100%;
+  }
+  .alert.faded {
+    max-height: 0;
+    scale: 0;
+    opacity: 0;
+  }
 }
