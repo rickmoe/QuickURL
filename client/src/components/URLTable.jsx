@@ -32,13 +32,12 @@ const URLTable = () => {
           });
         },
         onError: (error) => {
-          if (error.response.status === 400) {
-            setFocusedId(id);
-            createAnimatedTimedAlert({
-              type: "error",
-              message: "Password Required",
-            });
-          }
+          if (error.response.status !== 400) return;
+          setFocusedId(id);
+          createAnimatedTimedAlert({
+            type: "error",
+            message: "Password Required",
+          });
         },
       }
     );
@@ -55,22 +54,30 @@ const URLTable = () => {
           <h4>No links found. Try adding one!</h4>
         ) : (
           <>
-            <table>
+            <table role="table">
               <colgroup>
-                <col></col>
-                <col></col>
-                <col></col>
-                <col></col>
+                <col className="id"></col>
+                <col className="url"></col>
+                <col className="copy"></col>
+                <col className="delete"></col>
               </colgroup>
-              <thead>
-                <tr id="table-head">
-                  <th>ID</th>
-                  <th>URL</th>
-                  <th style={{ width: "3rem" }}>Copy</th>
-                  <th style={{ width: "3rem" }}>Delete</th>
+              <thead role="rowgroup">
+                <tr role="row" id="table-head">
+                  <th role="columnheader" className="id">
+                    ID
+                  </th>
+                  <th role="columnheader" className="url">
+                    URL
+                  </th>
+                  <th role="columnheader" className="copy">
+                    Copy
+                  </th>
+                  <th role="columnheader" className="delete">
+                    Delete
+                  </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody role="rowgroup">
                 {mappingData.pages.map((page) =>
                   page.mappings.map(({ _id, url, pinned }) => (
                     <TableRow
@@ -86,21 +93,19 @@ const URLTable = () => {
                 )}
               </tbody>
             </table>
-            <p>
-              {hasNextPage && (
-                <button
-                  className="table-load-button"
-                  onClick={fetchNextPage}
-                  disabled={isFetching}
-                >
-                  {isFetchingNextPage
-                    ? "Fetching"
-                    : `Show More (${
-                        mappingData.pages.slice(-1)[0].remaining
-                      } Links Remaining)`}
-                </button>
-              )}
-            </p>
+            {hasNextPage && (
+              <button
+                className="table-load-button"
+                onClick={fetchNextPage}
+                disabled={isFetching}
+              >
+                {isFetchingNextPage
+                  ? "Fetching"
+                  : `Show More (${
+                      mappingData.pages.slice(-1)[0].remaining
+                    } Links Remaining)`}
+              </button>
+            )}
           </>
         ))}
     </>

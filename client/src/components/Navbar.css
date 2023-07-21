@@ -16,12 +16,15 @@ nav {
   left: 0;
   z-index: 1;
 
+  /* Grid was chosen over flex since grid accounts 
+  for margins and borders while flex does not */
   display: grid;
   grid-template-columns: max-content 1fr;
 }
 
 nav h1 {
   font-size: var(--font-size-nav-title);
+  /* Transform to align h1 with search bar */
   transform: translateY(.375rem);
 }
 
@@ -43,9 +46,6 @@ nav .input-div {
   }
   nav::before {
     content: "";
-  }
-  nav h1 {
-    text-align: center;
   }
   nav .input-div {
     --input-width: calc(var(--font-size-nav) * 7);

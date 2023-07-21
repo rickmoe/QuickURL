@@ -38,7 +38,7 @@ a:hover {
     grid-template-columns: 1fr 1fr;
   }
 
-  .table-div {
+  .table-section {
     grid-column: span 2;
   }
 }

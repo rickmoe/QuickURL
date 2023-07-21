@@ -29,6 +29,7 @@
   --font-size-table: clamp(1rem, calc(1.3vw + .4rem), 2rem);
 
   --line-height: 1.4;
+  
   font-family: "Inter", sans-serif;
   line-height: var(--line-height);
 }

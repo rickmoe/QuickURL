@@ -11,7 +11,7 @@ export const useRedirect = (id) => {
   } = useQuery(["mappings", id], () => getURL(id));
 
   useEffect(() => {
-    if (url !== null && url !== undefined) {
+    if (url) {
       window.location.replace(url);
     }
   }, [url]);

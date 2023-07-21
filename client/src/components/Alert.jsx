@@ -9,6 +9,7 @@ const Alert = ({
 }) => {
   let classes = `alert ${type} ${copyText !== ""} ${className}`;
   if (copyText !== "") classes += " copyable";
+
   const alert = (
     <div className={classes} {...props}>
       {message !== "" && <span>{message}</span>}

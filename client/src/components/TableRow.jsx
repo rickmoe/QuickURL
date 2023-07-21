@@ -6,24 +6,24 @@ import pinIcon from "../assets/pin.png";
 
 const TableRow = ({ _id, url, pinned, focused, onCopy, onDelete }) => {
   return (
-    <tr key={_id}>
-      <td>
+    <tr role="row" key={_id}>
+      <td role="rowheader" data-cell="ID" className="id">
         {pinned && <img src={pinIcon} className="pin" />}
         {_id}
       </td>
-      <td>
+      <td role="cell" data-cell="URL" className="url">
         <a target="_blank" href={url}>
           {url}
         </a>
       </td>
-      <td>
+      <td role="cell" data-cell="Copy" className="copy">
         <CopyToClipboard text={`localhost:3000/${_id}`} onCopy={onCopy}>
           <img src={copyIcon} className="copy icon" />
         </CopyToClipboard>
       </td>
-      <td>
+      <td role="cell" data-cell="Delete" className="delete">
         <form
-          className={"delete-form"}
+          className={"delete form"}
           onSubmit={(event) => onDelete(event, _id)}
         >
           <input type="image" src={trashIcon} className="trash icon" />

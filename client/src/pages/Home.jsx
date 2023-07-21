@@ -5,16 +5,16 @@ import "./Home.css";
 const Home = () => {
   return (
     <section className="home">
-      <div className="title-div">
+      <section className="title-section">
         <h1>QuickURL</h1>
         <h2>Shrink your links</h2>
-      </div>
-      <div className="form-div">
+      </section>
+      <section className="form-section">
         <URLForm />
-      </div>
-      <div className="table-div">
+      </section>
+      <section className="table-section">
         <URLTable />
-      </div>
+      </section>
     </section>
   );
 };

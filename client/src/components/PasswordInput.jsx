@@ -14,6 +14,7 @@ const PasswordInput = ({ sharedClass = "", buttonClass = "", ...props }) => {
         className={`input-show ${sharedClass} ${buttonClass}`}
         onClick={() => setShowPassword((prev) => !prev)}
         src={"/src/assets/pwd-" + (showPassword ? "show" : "hide") + ".png"}
+        alt="password show icon"
       />
     </LabeledInput>
   );

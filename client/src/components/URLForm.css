@@ -4,12 +4,12 @@
   font-size: var(--font-size-form-title);
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-form .input-div {
+.form .input-div {
   --input-width: calc(var(--font-size-form) * 8);
   margin-bottom: .7rem;
 }
@@ -41,11 +41,11 @@ form .input-div {
     transition: scale 0.25s;
   }
 
-  form .input-div {
+  .form .input-div {
     transition: height 0.2s, transform 0.2s 0.3s;
     transform-origin: 0% 0%;
   }
-  form .input-div.hide {
+  .form .input-div.hide {
     visibility: visible;
     transition: transform 0.2s, height 0.2s 0.3s;
     transform-origin: 100% 100%;
@@ -55,7 +55,7 @@ form .input-div {
 }
 
 @media (min-width: 660px) {
-  form .input-div {
+  .form .input-div {
     --input-width: calc(var(--font-size-form) * 13.5);
   }
 }

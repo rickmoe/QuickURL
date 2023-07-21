@@ -4,6 +4,7 @@ const LabeledInput = ({
   id,
   inputType = "text",
   label = "",
+  placeholder = " ",
   sharedClass = "",
   divClass = "",
   labelClass = "",
@@ -17,7 +18,7 @@ const LabeledInput = ({
         id={id}
         type={inputType}
         className={`input ${sharedClass} ${inputClass}`}
-        placeholder=" "
+        placeholder={placeholder}
         {...props}
       />
       {label !== "" && (

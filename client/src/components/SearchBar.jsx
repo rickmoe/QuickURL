@@ -17,17 +17,14 @@ const SearchBar = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <LabeledInput
-        label="Search"
-        id="search"
-        type="search"
-        onChange={debounce((event) =>
-          dispatch(setSearch(event.target.value.toLowerCase()))
-        )}
-        required
-      />
-    </>
+    <LabeledInput
+      label="Search"
+      id="search"
+      type="search"
+      onChange={debounce((event) =>
+        dispatch(setSearch(event.target.value.toLowerCase()))
+      )}
+    />
   );
 };
 

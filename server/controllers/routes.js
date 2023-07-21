@@ -6,11 +6,10 @@ const router = express.Router();
 /******* Routes *********/
 /*** Get ***/
 router.get("/", async (req, res) => {
-  console.log(req.query);
   const { page, "page-size": pageSize, search: search = "" } = req.query;
   let response = {};
   if (page && pageSize) {
-    // Start is inlusive, end is not
+    // Start is included, end is not
     const startIndex = (page - 1) * pageSize;
     const endIndex = page * pageSize;
     try {
@@ -36,6 +35,7 @@ router.get("/", async (req, res) => {
       );
       if (response.remaining > 0) response.nextPage = parseInt(page) + 1;
     } catch (error) {
+      // Invalid regex search (i.e. use of "[") returns no matches
       res.json({ mappings: [], remaining: 0 });
       return;
     }

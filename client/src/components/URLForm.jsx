@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMappings } from "../hooks/useMappings";
 import { useAlert } from "../hooks/useAlert";
 import LabeledInput from "./LabeledInput";
@@ -17,24 +17,23 @@ const URLForm = () => {
     if (event.target.password?.value && !event.target.password?.disabled) {
       mapping.password = event.target.password.value;
     }
-    postMappingMutation.mutate(mapping);
-  };
 
-  useEffect(() => {
-    if (postMappingMutation.status !== "success") return;
-    if (typeof postMappingMutation.data?._id !== "string") return;
-    createAnimatedTimedAlert({
-      type: "success",
-      message: "Link Created! Click here to copy your link",
-      copyText: `localhost:3000/${postMappingMutation.data._id}`,
-      duration: 5000,
+    postMappingMutation.mutate(mapping, {
+      onSuccess: (data) => {
+        createAnimatedTimedAlert({
+          type: "success",
+          message: "Link Created! Click here to copy your link",
+          copyText: `localhost:3000/${data._id}`,
+          duration: 5000,
+        });
+      },
     });
-  }, [postMappingMutation.status]);
+  };
 
   return (
     <>
       <p className="form-title">Tiny links have never been so accessible</p>
-      <form onSubmit={handleSubmit}>
+      <form class="form" onSubmit={handleSubmit}>
         <LabeledInput label="Link" id="url" name="url" type="url" required />
         <PasswordInput
           label="Password"
@@ -44,11 +43,7 @@ const URLForm = () => {
           divClass={showAdvanced ? "" : "hide"}
         />
         <div className="button-row">
-          <input
-            type="button"
-            onClick={toggleAdvanced}
-            value="Advanced"
-          ></input>
+          <input type="button" onClick={toggleAdvanced} value="Advanced" />
           <input type="submit" value="Submit" />
         </div>
       </form>
