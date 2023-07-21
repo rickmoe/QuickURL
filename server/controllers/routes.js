@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
       );
       if (response.remaining > 0) response.nextPage = parseInt(page) + 1;
     } catch (error) {
-      res.sendStatus(400);
+      res.json({ mappings: [], remaining: 0 });
       return;
     }
   } else {
@@ -74,7 +74,10 @@ router.delete("/:id", async (req, res) => {
     res.sendStatus(404);
     return;
   }
-  if (mapping.hash && (!password || !(await compare(password, mapping.hash)))) {
+  if (
+    mapping.password &&
+    (!password || !(await compare(password, mapping.password)))
+  ) {
     res.sendStatus(400);
     return;
   }

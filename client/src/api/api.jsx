@@ -5,7 +5,7 @@ const api = axios.create({ baseURL: "http://localhost:5000" });
 
 /******** API Methods ********/
 /*** Get ***/
-export const getMappings = async ({ pageParam = 1, queryKey }) => {
+export const getMappings = async ({ queryKey, pageParam = 1 }) => {
   const { pageSize, search = "" } = queryKey[1];
   const uri = `/?page=${pageParam}&page-size=${pageSize}&search=${search}`;
   const response = await api.get(uri);

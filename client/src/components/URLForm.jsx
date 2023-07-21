@@ -24,9 +24,10 @@ const URLForm = () => {
     if (postMappingMutation.status !== "success") return;
     if (typeof postMappingMutation.data?._id !== "string") return;
     createAnimatedTimedAlert({
-      message: `Link Created! Go to localhost:3000/${postMappingMutation.data._id}`,
       type: "success",
-      duration: 8000,
+      message: "Link Created! Click here to copy your link",
+      copyText: `localhost:3000/${postMappingMutation.data._id}`,
+      duration: 5000,
     });
   }, [postMappingMutation.status]);
 

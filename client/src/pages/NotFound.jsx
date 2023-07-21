@@ -3,16 +3,16 @@ import "./NotFound.css";
 
 const NotFound = ({ path = "" }) => {
   return (
-    <>
+    <section className="not-found">
       <h1>Page Not Found</h1>
-      <p>
+      <h2>
         Sorry, we could not find a URL linked to the path{" "}
-        {path !== "" ? <span className="emphasize">{path}</span> : "given"}
-      </p>
+        {path !== "" ? <b>{path}</b> : "given"}
+      </h2>
       <Link to="/" className="button">
         Return Home
       </Link>
-    </>
+    </section>
   );
 };
 

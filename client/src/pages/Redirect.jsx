@@ -6,7 +6,7 @@ const Redirect = () => {
   const path = useLocation().pathname;
   const { status } = useRedirect(path.substring(1));
 
-  if (status === "loading") return <h1>Fetching...</h1>;
+  if (status === "loading") return <h1>Loading...</h1>;
   else if (status === "error") {
     return <NotFound path={path} />;
   }

@@ -13,25 +13,29 @@ import Home from "./pages/Home";
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Redirect = lazy(() => import("./pages/Redirect"));
 
-function App() {
+const App = () => {
   let router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Root />}>
-        <Route index element={<Home />} />
-        <Route path="/:id" element={<Redirect />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
+      <>
+        <Route path="/" element={<Root hasNav={true} />}>
+          <Route index element={<Home />} />
+        </Route>
+        <Route path="/" element={<Root hasNav={false} />}>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/:id" element={<Redirect />} />
+        </Route>
+      </>
     )
   );
 
   return <RouterProvider router={router} />;
-}
+};
 
-const Root = () => {
+const Root = ({ hasNav = true }) => {
   return (
     <>
-      <Navbar />
-      <main>
+      {hasNav && <Navbar />}
+      <main className={hasNav ? "main" : "main no-nav"}>
         <Suspense fallback={<h1>Loading...</h1>}>
           <Outlet />
         </Suspense>

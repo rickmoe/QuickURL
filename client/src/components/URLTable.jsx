@@ -10,6 +10,8 @@ const URLTable = () => {
     status,
     hasNextPage,
     fetchNextPage,
+    isFetching,
+    isFetchingNextPage,
     deleteMappingMutation,
   } = useMappings();
   const { createAnimatedTimedAlert } = useAlert();
@@ -25,16 +27,16 @@ const URLTable = () => {
         onSuccess: () => {
           setFocusedId("");
           createAnimatedTimedAlert({
-            message: "Link Deleted",
             type: "success",
+            message: "Link Deleted",
           });
         },
         onError: (error) => {
           if (error.response.status === 400) {
             setFocusedId(id);
             createAnimatedTimedAlert({
-              message: "Password Required",
               type: "error",
+              message: "Password Required",
             });
           }
         },
@@ -86,9 +88,16 @@ const URLTable = () => {
             </table>
             <p>
               {hasNextPage && (
-                <button className="table-load-button" onClick={fetchNextPage}>
-                  Show More ({mappingData.pages.slice(-1)[0].remaining} Links
-                  Remaining)
+                <button
+                  className="table-load-button"
+                  onClick={fetchNextPage}
+                  disabled={isFetching}
+                >
+                  {isFetchingNextPage
+                    ? "Fetching"
+                    : `Show More (${
+                        mappingData.pages.slice(-1)[0].remaining
+                      } Links Remaining)`}
                 </button>
               )}
             </p>

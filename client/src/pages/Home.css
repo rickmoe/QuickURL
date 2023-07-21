@@ -1,4 +1,4 @@
-main {
+.home {
   display: grid;
   grid-template-rows: 19vh 30vh auto;
 }
@@ -26,9 +26,14 @@ a:hover {
 }
 
 @media (min-width: 660px) {
-  main {
+  .main {
     padding-top: calc(27vh - var(--nav-height) - var(--font-size-title) + 4rem);
+  }
+  .main.no-nav {
+    padding-top: calc(27vh - var(--font-size-title) + 4rem);
+  }
 
+  .home {
     grid-template-rows: calc(4 * var(--font-size-title)) auto;
     grid-template-columns: 1fr 1fr;
   }

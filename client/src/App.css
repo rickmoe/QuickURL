@@ -41,7 +41,7 @@
   box-sizing: border-box;
 }
 
-main {
+.main {
   margin-top: var(--nav-height);
   min-height: calc(100vh - var(--nav-height));
   padding: 7vh clamp(4vw, calc(12vw - 2.75rem), 8vw) 4vh;
@@ -49,6 +49,11 @@ main {
   background: var(--color-neutral-1);
   color: var(--color-contast-1);
   text-align: center;
+}
+.main.no-nav {
+  margin-top: 0;
+  padding-top: calc(var(--nav-height) + 7vh);
+  min-height: 100vh;
 }
 
 h1, h2, h4 {

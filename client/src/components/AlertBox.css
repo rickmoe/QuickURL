@@ -1,6 +1,6 @@
 .alert-box {
-  position: absolute;
-  bottom: calc(var(--font-size-subtitle) / 8);
+  position: fixed;
+  top: calc(var(--nav-height) + var(--font-size-subtitle) / 8);
   right: calc(var(--font-size-subtitle) * 1.5 - 2.125rem);
   z-index: 1;
 
@@ -21,6 +21,10 @@
   z-index: 1;
 }
 
+.alert.copyable {
+  cursor: pointer;
+}
+
 .alert.success {
   background-color: var(--color-success);
 }
@@ -37,9 +41,9 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .alert {
-    max-height: 100vh;
-    transition: all 0.5s ease-in-out, max-height 5s linear;
-    transform-origin: 100% 100%;
+    max-height: 20vh;
+    transition: all 0.5s ease-in-out, max-height 0.5s linear;
+    transform-origin: 100% 0%;
   }
   .alert.faded {
     max-height: 0;
