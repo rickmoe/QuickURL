@@ -33,7 +33,7 @@ const URLForm = () => {
   return (
     <>
       <p className="form-title">Tiny links have never been so accessible</p>
-      <form class="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <LabeledInput label="Link" id="url" name="url" type="url" required />
         <PasswordInput
           label="Password"

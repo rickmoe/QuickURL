@@ -8,7 +8,7 @@ const TableRow = ({ _id, url, pinned, focused, onCopy, onDelete }) => {
   return (
     <tr role="row" key={_id}>
       <td role="rowheader" data-cell="ID" className="id">
-        {pinned && <img src={pinIcon} className="pin" />}
+        {pinned && <img src={pinIcon} className="pin" alt="pinned icon" />}
         {_id}
       </td>
       <td role="cell" data-cell="URL" className="url">
@@ -18,7 +18,7 @@ const TableRow = ({ _id, url, pinned, focused, onCopy, onDelete }) => {
       </td>
       <td role="cell" data-cell="Copy" className="copy">
         <CopyToClipboard text={`localhost:3000/${_id}`} onCopy={onCopy}>
-          <img src={copyIcon} className="copy icon" />
+          <img src={copyIcon} className="copy icon" alt="copy icon" />
         </CopyToClipboard>
       </td>
       <td role="cell" data-cell="Delete" className="delete">
@@ -26,7 +26,12 @@ const TableRow = ({ _id, url, pinned, focused, onCopy, onDelete }) => {
           className={"delete form"}
           onSubmit={(event) => onDelete(event, _id)}
         >
-          <input type="image" src={trashIcon} className="trash icon" />
+          <input
+            type="image"
+            src={trashIcon}
+            className="trash icon"
+            alt="delete icon"
+          />
           {focused && (
             <PasswordInput
               id="delete-password"
