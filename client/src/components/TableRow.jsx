@@ -18,7 +18,7 @@ const TableRow = ({ _id, url, pinned, focused, onCopy, onDelete }) => {
       </td>
       <td role="cell" data-cell="Copy" className="copy">
         <CopyToClipboard
-          text={`https://quick-url.netlify.app//${_id}`}
+          text={`https://quick-url.netlify.app/${_id}`}
           onCopy={onCopy}
         >
           <img src={copyIcon} className="copy icon" alt="copy icon" />
