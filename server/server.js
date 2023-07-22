@@ -7,7 +7,7 @@ import router from "./controllers/routes.js";
 const app = express();
 const port = process.env.PORT || 5000;
 const corsOptions = {
-  origin: "*",
+  origin: "https://quick-url.netlify.app/",
   optionsSuccessStatus: 200,
 };
 

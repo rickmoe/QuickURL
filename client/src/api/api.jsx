@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Define api ("baseURL" references the backend)
-const api = axios.create({ baseURL: "http://localhost:5000" });
+const api = axios.create({ baseURL: "https://clumsy-pink-tam.cyclic.app" });
 
 /******** API Methods ********/
 /*** Get ***/

@@ -23,7 +23,7 @@ const URLForm = () => {
         createAnimatedTimedAlert({
           type: "success",
           message: "Link Created! Click here to copy your link",
-          copyText: `localhost:3000/${data._id}`,
+          copyText: `https://quick-url.netlify.app/${data._id}`,
           duration: 5000,
         });
       },
